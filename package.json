@@ -1,0 +1,38 @@
+{
+  "name": "saltlite",
+  "version": "0.1.0",
+  "author": "Salt-lovely",
+  "description": "Salt lovely's light-weight frontend lib",
+  "main": "src/entry.ts",
+  "keywords": [
+    "front-end",
+    "saltlite"
+  ],
+  "license": "MulanPSL",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Salt-lovely/saltlite"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "bugs": {
+    "url": "https://github.com/Salt-lovely",
+    "email": "732237136@qq.com"
+  },
+  "contributors": [
+    {
+      "name": "Salt lovely",
+      "email": "732237136@qq.com"
+    }
+  ],
+  "scripts": {
+    "devbuild": "esbuild ./src/entry.ts --bundle --define:process.env.NODE_ENV=development --outfile=dist/SaltLite.js",
+    "build": "esbuild ./src/entry.ts --bundle --define:process.env.NODE_ENV=production --minify --outfile=dist/SaltLite.min.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "~4.2.0",
+    "esbulid": "~0.12.9"
+  }
+}
