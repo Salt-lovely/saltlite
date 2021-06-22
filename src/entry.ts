@@ -1,6 +1,7 @@
 // 整个SaltLite的入口
 import polyfillAndMore from './polyfill/index';
 import safe from './safe/index';
+import element from './createElement/index';
 import util from './util/index';
 import * as query from './query';
 
@@ -26,6 +27,7 @@ const global: any = util.getGlobalThis();
 /** SaltLite对象 */
 const SaltLite: SaltLite = {
   ...safe,
+  ...element,
   ...util,
   ...query,
 };

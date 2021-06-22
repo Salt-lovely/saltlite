@@ -1,4 +1,4 @@
-/// <reference path="./createElementTypings/props.d.ts" />
+/// <reference path="./props.d.ts" />
 interface createHTMLElementPropsMap {
   a: createHTMLAnchorElementProps;
   abbr: createHTMLElementProps;
@@ -8,7 +8,7 @@ interface createHTMLElementPropsMap {
   area: createHTMLAreaElementProps;
   article: createHTMLElementProps;
   aside: createHTMLElementProps;
-  audio: createHTMLElementProps; // HTMLAudioElement;
+  audio: createHTMLAudioElementProps;
   b: createHTMLElementProps;
   base: createHTMLElementProps; // HTMLBaseElement;
   basefont: createHTMLElementProps; // HTMLBaseFontElement;

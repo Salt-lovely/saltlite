@@ -1,3 +1,6 @@
+/** CORS枚举 */
+type crossOriginEnum = 'anonymous' | 'use-credentials' | '' | string | null;
+
 // 所有元素
 interface createHTMLElementProps {
   /** 元素id */
@@ -49,15 +52,25 @@ interface createHTMLHyperlinkElementPropsUtils {
 // 媒体元素
 interface createHTMLMediaElementPropsUtils {
   /** 是否自动播放 */
-  autoplay: boolean;
+  autoplay?: boolean;
   /** 使用浏览器默认的媒体控制器 */
-  controls: boolean;
+  controls?: boolean;
   /** 默认静音 */
-  defaultMuted: boolean;
+  defaultMuted?: boolean;
   /** 跨域设置 */
-  crossOrigin: string | null;
+  crossOrigin?: crossOriginEnum;
   /** 默认播放速度 */
-  controls: boolean;
+  controls?: boolean;
+  /** 循环播放 */
+  loop?: boolean;
+  /** **覆盖 defaultMuted** 设置静音 */
+  muted?: boolean;
+  /** 媒体资源URL */
+  src?: string;
+  /** 设置与HTMLMediaElement关联的媒体源 **兼容性不佳** */
+  srcObject?: MediaProvider | null;
+  /** 音量 */
+  volume?: number;
 }
 // <a>
 interface createHTMLAnchorElementProps extends createHTMLElementProps, createHTMLHyperlinkElementPropsUtils {
@@ -74,3 +87,4 @@ interface createHTMLAreaElementProps extends createHTMLElementProps, createHTMLH
   coords?: string;
   download?: string;
 }
+interface createHTMLAudioElementProps extends createHTMLElementProps, createHTMLMediaElementPropsUtils {}

@@ -52,17 +52,17 @@ function eventNameFix(props: createHTMLElementProps) {
 function createElement<K extends keyof HTMLElementTagNameMap>(
   tagName: K,
   props?: createHTMLElementPropsMap[K],
-  children?: Node | Node[]
+  children?: acceptableChildren
 ): HTMLElementTagNameMap[K];
 function createElement<K extends keyof HTMLElementTagNameMap, P>(
-  customElement: (props: P, children?: Node | Node[]) => HTMLElementTagNameMap[K],
+  customElement: (props: P, children?: acceptableChildren) => HTMLElementTagNameMap[K],
   props: P,
-  children?: Node | Node[]
+  children?: acceptableChildren
 ): HTMLElementTagNameMap[K];
 function createElement<K extends keyof HTMLElementTagNameMap, P>(
-  argu1: K | ((props?: P, children?: Node | Node[]) => HTMLElementTagNameMap[K]),
+  argu1: K | ((props?: P, children?: acceptableChildren) => HTMLElementTagNameMap[K]),
   props: createHTMLElementPropsMap[K] | P,
-  children?: Node | Node[]
+  children?: acceptableChildren
 ): HTMLElementTagNameMap[K] {
   if (typeof argu1 === 'function') {
     return argu1(props as P, children);
@@ -94,12 +94,12 @@ function createElements<K extends keyof HTMLElementTagNameMap, P>(
     | {
         tagName: K;
         props?: createHTMLElementPropsMap[K];
-        children?: Node | Node[];
+        children?: acceptableChildren;
       }
     | {
-        customElement: (props: P, children?: Node | Node[]) => HTMLElementTagNameMap[K];
+        customElement: (props: P, children?: acceptableChildren) => HTMLElementTagNameMap[K];
         props: P;
-        children?: Node | Node[];
+        children?: acceptableChildren;
       }
     | string
   )[]
