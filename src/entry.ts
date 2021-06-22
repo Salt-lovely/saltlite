@@ -1,3 +1,8 @@
+/*!
+ * @Name saltlite
+ * @License MulanPSL
+ * @Description Salt lovely's light-weight frontend lib
+ */
 // 整个SaltLite的入口
 import polyfillAndMore from './polyfill/index';
 import safe from './safe/index';
