@@ -16,8 +16,9 @@ const SaltLite = window.SaltLite
 
 ## 文件结构 Folder Structure
 
+<!-- ║╟╠╚╙ -->
+
 ```
-║╟╠╚╙
 SaltLite
 ╟ README.md ┄ 说明文档
 ╟ DOC.md ┄ 使用文档
@@ -38,6 +39,10 @@ SaltLite
     ╠ safe ┄ 安全性检查方法
     ║  ╟ index.ts ┄ 方法汇总输出
     ║  ╙ unsafeProps.ts ┄ 检查属性名是否安全
+    ╠ createElement ┄ 创建元素工厂函数及其附属函数
+    ║  ╟ index.ts ┄ 方法汇总输出
+    ║  ╟ index.d.ts ┄ 声明文件
+    ║  ╙ element.ts ┄ 创建元素工厂函数
     ╚ util ┄ 杂项
         ╟ index.ts ┄ 方法汇总输出
         ╟ index.d.ts ┄ 声明文件
