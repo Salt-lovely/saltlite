@@ -1,8 +1,9 @@
+/// <reference path="./events.d.ts" />
 /** CORS枚举 */
 type crossOriginEnum = 'anonymous' | 'use-credentials' | '' | string | null;
-
+type targetEnum = '_self' | '_blank' | '_parent' | '_top';
 // 所有元素
-interface createHTMLElementProps {
+interface createHTMLElementProps extends GlobalHTMLElemetEventProps {
   /** 元素id */
   id?: string;
   /** 元素类名 */
@@ -19,24 +20,6 @@ interface createHTMLElementProps {
   hidden?: boolean;
   /** 元素内容的语言 */
   lang?: string;
-  /** 点击事件 */
-  onClick?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
-  /** 双击事件 */
-  onDblClick?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
-  /** 鼠标按下事件 */
-  onMouseDown?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
-  /** 鼠标进入事件 */
-  onMouseEnter?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
-  /** 鼠标离开事件 */
-  onMouseLeave?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
-  /** 鼠标移动事件 */
-  onMouseMove?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
-  /** 鼠标进入事件 **鼠标进入子元素时也会触发, 不推荐使用** */
-  onMouseOver?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
-  /** 鼠标离开事件 **鼠标离开子元素时也会触发, 不推荐使用** */
-  onMouseOut?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
-  /** 鼠标松开事件 */
-  onMouseUp?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
 }
 // 带有超链接的元素
 interface createHTMLHyperlinkElementPropsUtils {
@@ -71,15 +54,19 @@ interface createHTMLMediaElementPropsUtils {
   srcObject?: MediaProvider | null;
   /** 音量 */
   volume?: number;
+  onEncrypted?: ((this: HTMLMediaElement, ev: MediaEncryptedEvent) => any) | null;
+  onWaitingForKey?: ((this: HTMLMediaElement, ev: Event) => any) | null;
 }
-// <a>
+// a
 interface createHTMLAnchorElementProps extends createHTMLElementProps, createHTMLHyperlinkElementPropsUtils {
   /** 链接到资源的语言 */
   hreflang?: string;
   /** 链接到媒体的类型 */
   media?: string;
+  /** 在何处显示链接的资源 */
+  target?: targetEnum;
 }
-// <area>
+// area
 interface createHTMLAreaElementProps extends createHTMLElementProps, createHTMLHyperlinkElementPropsUtils {
   /** 代替的文本字符串 */
   alt?: string;
@@ -87,4 +74,45 @@ interface createHTMLAreaElementProps extends createHTMLElementProps, createHTMLH
   coords?: string;
   download?: string;
 }
+// audio
 interface createHTMLAudioElementProps extends createHTMLElementProps, createHTMLMediaElementPropsUtils {}
+// base
+interface createHTMLBaseElementProps extends createHTMLElementProps {
+  /** 链接 */
+  href?: string;
+  /** 在何处显示链接的资源 */
+  target?: targetEnum;
+}
+// font
+interface createHTMLFontElementProps extends createHTMLElementProps {
+  /** @deprecated 文字颜色 */
+  color: string;
+  /** @deprecated 文字字体 */
+  face: string;
+  /** @deprecated 文字大小或相对大小 */
+  size: string;
+}
+// script
+interface createHTMLScriptElementProps extends createHTMLElementProps {
+  /** 异步执行 */
+  async: boolean;
+  /** @deprecated */
+  charset: string;
+  /** 跨域设置 */
+  crossOrigin: crossOriginEnum;
+  /** 延迟执行 */
+  defer: boolean;
+  /** 脚本资源的URL */
+  src: string;
+}
+// video
+interface createHTMLVideoElementProps extends createHTMLElementProps, createHTMLMediaElementPropsUtils {
+  /** 元素高度 */
+  height: number;
+  /** 兼容性设置, 一般情况下请忽略, 设为true则视频将默认在元素范围内播放 */
+  playsInline: boolean;
+  /** 视频封面URL */
+  poster: string;
+  /** 元素宽度 */
+  width: number;
+}

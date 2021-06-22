@@ -10,7 +10,8 @@ interface createHTMLElementPropsMap {
   aside: createHTMLElementProps;
   audio: createHTMLAudioElementProps;
   b: createHTMLElementProps;
-  base: createHTMLElementProps; // HTMLBaseElement;
+  base: createHTMLBaseElementProps;
+  /** @deprecated **警告：请勿使用** */
   basefont: createHTMLElementProps; // HTMLBaseFontElement;
   bdi: createHTMLElementProps;
   bdo: createHTMLElementProps;
@@ -32,7 +33,7 @@ interface createHTMLElementPropsMap {
   dfn: createHTMLElementProps;
   dialog: createHTMLElementProps; // HTMLDialogElement;
   dir: createHTMLElementProps; // HTMLDirectoryElement;
-  div: createHTMLElementProps; // HTMLDivElement;
+  div: createHTMLElementProps; // HTMLDivElement; // 这个还是用 createHTMLElementProps吧
   dl: createHTMLElementProps; // HTMLDListElement;
   dt: createHTMLElementProps;
   em: createHTMLElementProps;
@@ -40,7 +41,8 @@ interface createHTMLElementPropsMap {
   fieldset: createHTMLElementProps; // HTMLFieldSetElement;
   figcaption: createHTMLElementProps;
   figure: createHTMLElementProps;
-  font: createHTMLElementProps; // HTMLFontElement;
+  /** @deprecated **警告：谨慎使用** */
+  font: createHTMLFontElementProps;
   footer: createHTMLElementProps;
   form: createHTMLElementProps; // HTMLFormElement;
   frame: createHTMLElementProps; // HTMLFrameElement;
@@ -54,7 +56,7 @@ interface createHTMLElementPropsMap {
   head: createHTMLElementProps; // HTMLHeadElement; // 这个还是用 createHTMLElementProps吧
   header: createHTMLElementProps;
   hgroup: createHTMLElementProps;
-  hr: createHTMLElementProps; // HTMLHRElement;
+  hr: createHTMLElementProps; // HTMLHRElement; // 这个还是用 createHTMLElementProps吧
   html: createHTMLElementProps; // HTMLHtmlElement;
   i: createHTMLElementProps;
   iframe: createHTMLElementProps; // HTMLIFrameElement;
@@ -91,13 +93,13 @@ interface createHTMLElementPropsMap {
   ruby: createHTMLElementProps;
   s: createHTMLElementProps;
   samp: createHTMLElementProps;
-  script: createHTMLElementProps; // HTMLScriptElement;
+  script: createHTMLScriptElementProps;
   section: createHTMLElementProps;
   select: createHTMLElementProps; // HTMLSelectElement;
   slot: createHTMLElementProps; // HTMLSlotElement;
   small: createHTMLElementProps;
   source: createHTMLElementProps; // HTMLSourceElement;
-  span: createHTMLElementProps; // HTMLSpanElement;
+  span: createHTMLElementProps; // HTMLSpanElement; // 这个还是用 createHTMLElementProps吧
   strong: createHTMLElementProps;
   style: createHTMLElementProps; // HTMLStyleElement;
   sub: createHTMLElementProps;
@@ -116,8 +118,8 @@ interface createHTMLElementPropsMap {
   tr: createHTMLElementProps; // HTMLTableRowElement;
   track: createHTMLElementProps; // HTMLTrackElement;
   u: createHTMLElementProps;
-  ul: createHTMLElementProps; // HTMLUListElement;
+  ul: createHTMLElementProps; // HTMLUListElement; // 这个还是用 createHTMLElementProps吧
   var: createHTMLElementProps;
-  video: createHTMLElementProps; // HTMLVideoElement;
+  video: createHTMLVideoElementProps;
   wbr: createHTMLElementProps;
 }

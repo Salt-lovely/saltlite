@@ -1,5 +1,7 @@
 /// <reference path="./createElementTypings/map.d.ts" />
+/** 可接受的节点 */
 type acceptableChild = Node | string;
+/** 可接受的子节点输入 */
 type acceptableChildren = acceptableChild | acceptableChild[];
 interface SaltCreateElement {
   /**
