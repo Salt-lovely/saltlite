@@ -24,9 +24,12 @@ export function HTMLElementPlus() {
       return this.classList.contains(className);
     };
   if (!HTMLElement.prototype.appendChildren)
-    HTMLElement.prototype.appendChildren = function (...children: Node[]) {
+    HTMLElement.prototype.appendChildren = function (...children: (Node | string)[]) {
       const frag = document.createDocumentFragment();
-      for (const n of children) frag.appendChild(n);
+      for (const n of children) {
+        if (n instanceof Node) frag.appendChild(n);
+        else if (typeof n === 'string') frag.appendChild(document.createTextNode(n));
+      }
       this.appendChild(frag);
       return this;
     };

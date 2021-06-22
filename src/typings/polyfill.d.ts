@@ -24,7 +24,7 @@ interface HTMLElement {
    * 将子元素批量附到这个元素上, 可流式编程
    * @param children 子元素数组
    */
-  appendChildren(...children: Node[]): HTMLElement;
+  appendChildren(...children: (Node | string)[]): HTMLElement;
   /**
    * 设置元素的行内样式, 可流式编程
    * @param prop 属性名
