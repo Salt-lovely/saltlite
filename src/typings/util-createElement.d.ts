@@ -1,68 +1,9 @@
-interface createHTMLElementProps {
-  /** 元素id */
-  id?: string;
-  /** 元素类名 */
-  className?: string;
-  /** 元素提示 */
-  title?: string;
-  /** 元素的文字内容 */
-  textContent?: string;
-  /** 元素访问的快捷键 */
-  accessKey?: string;
-  /** 元素内容方向 */
-  dir?: string;
-  /** 元素是否隐藏 */
-  hidden?: boolean;
-  /** 元素内容的语言 */
-  lang?: string;
-  /** 点击事件 */
-  onClick?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
-  /** 双击事件 */
-  onDblClick?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
-  /** 鼠标按下事件 */
-  onMouseDown?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
-  /** 鼠标进入事件 */
-  onMouseEnter?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
-  /** 鼠标离开事件 */
-  onMouseLeave?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
-  /** 鼠标移动事件 */
-  onMouseMove?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
-  /** 鼠标进入事件 **鼠标进入子元素时也会触发, 不推荐使用** */
-  onMouseOver?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
-  /** 鼠标离开事件 **鼠标离开子元素时也会触发, 不推荐使用** */
-  onMouseOut?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
-  /** 鼠标松开事件 */
-  onMouseUp?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
-}
-
-interface createHTMLHyperlinkElementPropsUtils {
-  /** 链接 */
-  href?: string;
-  /** 设置哈希, 即`#`后面的部分 */
-  hash?: string;
-  // /** 链接的主机及端口名 */
-  // host?: string;
-  // /** 链接的主机名 */
-  // hostname?: string;
-}
-
-interface createHTMLAnchorElementProps extends createHTMLElementProps, createHTMLHyperlinkElementPropsUtils {
-  /** 链接到资源的语言 */
-  hreflang?: string;
-  /** 链接到媒体的类型 */
-  media?: string;
-}
-interface createHTMLAreaElementProps extends createHTMLElementProps, createHTMLHyperlinkElementPropsUtils {
-  /** 代替的文本字符串 */
-  alt?: string;
-  /** 热点区域的具体坐标值 */
-  coords?: string;
-  download?: string;
-}
+/// <reference path="./createElementTypings/props.d.ts" />
 interface createHTMLElementPropsMap {
   a: createHTMLAnchorElementProps;
   abbr: createHTMLElementProps;
   address: createHTMLElementProps;
+  /** @deprecated **警告：请勿使用** */
   applet: createHTMLElementProps; // HTMLAppletElement;
   area: createHTMLAreaElementProps;
   article: createHTMLElementProps;
