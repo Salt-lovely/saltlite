@@ -26,7 +26,7 @@ function createElement<K extends keyof HTMLElementTagNameMap, P>(
       // @ts-ignore
       for (const p in props) {
         // @ts-ignore
-        if (typeof (props as createHTMLElementPropsMap[K])[p] !== 'undefined' && isSafePropName(p))
+        if (typeof props[p] !== 'undefined' && isSafePropName(p))
           // @ts-ignore
           el[p] = props[p]; // 这一步是属于js的魔法
       }

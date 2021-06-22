@@ -1,6 +1,7 @@
 /// <reference path="./events.d.ts" />
 /** CORS枚举 */
 type crossOriginEnum = 'anonymous' | 'use-credentials' | '' | string | null;
+/** 打开资源目标位置枚举 */
 type targetEnum = '_self' | '_blank' | '_parent' | '_top';
 // 所有元素
 interface createHTMLElementProps extends GlobalHTMLElemetEventProps {

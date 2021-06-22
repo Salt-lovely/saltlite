@@ -110,12 +110,13 @@ function eventNameFix<K extends keyof HTMLElementTagNameMap>(
   props: createHTMLElementProps
 ) {
   for (const p in props) {
-    if (typeof p !== 'string') {
+    if (typeof p !== 'string' || p[0].toLocaleLowerCase() !== 'o') {
+      // @ts-ignore
       props[p] = <never>undefined;
       continue;
     }
     const lc = p.toLocaleLowerCase();
-    if (lc[0] === 'o' && eventName.has(lc) && p !== lc) {
+    if (eventName.has(lc) && p !== lc) {
       // 使用 addEventListener 添加监听
       // @ts-ignore
       if (typeof props[p] === 'function') element.addEventListener(eventName.get(lc)!, props[p], false);
