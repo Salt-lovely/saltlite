@@ -1,6 +1,6 @@
 {
   "name": "saltlite",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Salt-lovely",
   "description": "Salt lovely's light-weight frontend lib",
   "main": "src/entry.ts",
@@ -28,7 +28,8 @@
   ],
   "scripts": {
     "devbuild": "esbuild ./src/entry.ts --bundle --define:process.env.NODE_ENV=development --outfile=dist/SaltLite.js",
-    "build": "esbuild ./src/entry.ts --bundle --define:process.env.NODE_ENV=production --minify --outfile=dist/SaltLite.min.js"
+    "minbuild": "esbuild ./src/entry.ts --bundle --define:process.env.NODE_ENV=production --minify --outfile=dist/SaltLite.min.js",
+    "build": "npm run devbuild & npm run minbuild"
   },
   "dependencies": {},
   "devDependencies": {
