@@ -6,4 +6,15 @@ interface SaltSafe {
   isSafePropName(propName: string | number): boolean;
   /** 将可疑的属性名置为`undefined` */
   filterUnsafeProp<T extends object>(obj: T): T;
+  /**
+   * 遍历数组中的属性，跳过`undefined`和可疑属性
+   * @param obj 存在可疑属性对象
+   * @param fn 每个循环体调用的回调函数
+   * @param deleteUnsafeProp 是否删除可疑属性（置为`undefined`）默认不删除
+   */
+  forSafePropsInObject<T extends object, P extends Extract<keyof T, string>>(
+    obj: T,
+    fn: (propName: P, value: T[P]) => void,
+    deleteUnsafeProp = false
+  ): T;
 }

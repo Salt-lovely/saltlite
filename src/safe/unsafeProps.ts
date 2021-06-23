@@ -24,4 +24,22 @@ function filterUnsafeProp<T extends object>(obj: T): T {
   }
   return obj;
 }
-export { isSafePropName, isUnsafePropName, filterUnsafeProp };
+function forSafePropsInObject<T extends object, P extends Extract<keyof T, string>>(
+  obj: T,
+  fn: (propName: P, value: T[P]) => void,
+  deleteUnsafeProp = false
+): T {
+  for (const p in obj) {
+    const isSafe = isSafePropName(p);
+    if (isSafe && typeof obj[p] !== 'undefined') {
+      // @ts-ignore
+      fn(p, obj[p]);
+    } else if (!isSafe && deleteUnsafeProp) {
+      // 顺道删掉可疑属性
+      // @ts-ignore
+      obj[p] = undefined;
+    }
+  }
+  return obj;
+}
+export { isSafePropName, isUnsafePropName, filterUnsafeProp, forSafePropsInObject };

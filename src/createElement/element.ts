@@ -1,4 +1,5 @@
-import { isSafePropName } from '../safe/unsafeProps';
+import { forSafePropsInObject, isSafePropName } from '../safe/unsafeProps';
+import { assert } from '../util/utils';
 import { eventNameFix } from './element-event';
 
 function createElement<K extends keyof HTMLElementTagNameMap>(
@@ -20,16 +21,13 @@ function createElement<K extends keyof HTMLElementTagNameMap, P>(
     return argu1(props as P, children);
   } else {
     const el = document.createElement(argu1 as K);
-    if (props) {
+    if (typeof props === 'object') {
       // 处理事件
       eventNameFix(el, props);
-      // @ts-ignore
-      for (const p in props) {
+      forSafePropsInObject(props as createHTMLElementPropsMap[K], (p, v) => {
         // @ts-ignore
-        if (typeof props[p] !== 'undefined' && isSafePropName(p))
-          // @ts-ignore
-          el[p] = props[p]; // 这一步是属于js的魔法
-      }
+        el[p] = v; // 这一步是属于js的魔法
+      });
     }
     if (children) {
       if (children instanceof Array) {
@@ -56,6 +54,8 @@ function createElements<K extends keyof HTMLElementTagNameMap, P>(
     | string
   )[]
 ): Array<HTMLElementTagNameMap[K]> {
+  // 断言这是一个数组
+  assert(props instanceof Array, 'createElements 方法只接受一个数组作为有效输入');
   return props.map((p) => {
     if (typeof p === 'string') return createElement('span', { textContent: p });
     // @ts-ignore
