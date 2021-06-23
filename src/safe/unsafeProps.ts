@@ -1,4 +1,4 @@
-const unsafeNames: Set<string | number> = new Set([
+const unsafePropNames: Set<string | number> = new Set([
   '__proto__',
   'constructor',
   'prototype',
@@ -10,9 +10,18 @@ const unsafeNames: Set<string | number> = new Set([
   'propertyIsEnumerable',
 ]);
 function isUnsafePropName(propName: string | number) {
-  return unsafeNames.has(propName);
+  return unsafePropNames.has(propName);
 }
 function isSafePropName(propName: string | number) {
-  return !unsafeNames.has(propName);
+  return !unsafePropNames.has(propName);
 }
-export { isSafePropName, isUnsafePropName };
+function filterUnsafeProp<T extends object>(obj: T): T {
+  for (const p in obj) {
+    if (isUnsafePropName(p)) {
+      // @ts-ignore
+      obj[p] = undefined;
+    }
+  }
+  return obj;
+}
+export { isSafePropName, isUnsafePropName, filterUnsafeProp };
