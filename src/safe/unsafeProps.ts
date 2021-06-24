@@ -29,17 +29,16 @@ function forSafePropsInObject<T extends object, P extends Extract<keyof T, strin
   fn: (propName: P, value: T[P]) => void,
   deleteUnsafeProp = false
 ): T {
-  for (const p in obj) {
-    const isSafe = isSafePropName(p);
-    if (isSafe && typeof obj[p] !== 'undefined') {
-      // @ts-ignore
-      fn(p, obj[p]);
-    } else if (!isSafe && deleteUnsafeProp) {
+  // 忽略undefined项
+  for (const p in obj)
+    if (typeof obj[p] !== 'undefined') {
+      // 仅对不可疑的属性执行回调
+      if (isSafePropName(p)) fn(p as P, obj[p as P]);
       // 顺道删掉可疑属性
       // @ts-ignore
-      obj[p] = undefined;
+      else if (deleteUnsafeProp) obj[p] = undefined;
     }
-  }
+
   return obj;
 }
 export { isSafePropName, isUnsafePropName, filterUnsafeProp, forSafePropsInObject };
