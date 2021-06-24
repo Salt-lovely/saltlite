@@ -27,6 +27,28 @@ interface SaltUtil {
    * @param defaultValue 默认值
    */
   readWithDefault<T>(key: string, defaultValue: T): T;
+  /**
+   * 判断是否为特定类型的数组
+   * @param obj 要判断的对象
+   * @param check 检查数组内容的方法
+   */
+  isArray<T>(obj: any, check: (elem: any) => elem is T): obj is Array<T>;
+  /** 判断是否为`bigint`型 */
+  isBigint(obj: any): obj is bigint;
+  /** 判断是否为`boolean`型 */
+  isBoolean(obj: any): obj is boolean;
+  /** 判断是否为函数 */
+  isFunction(obj: any): obj is Function;
+  /** 判断是否为`HTMLElement`实例 */
+  isHTMLlement(obj: any): obj is HTMLElement;
+  /** 判断是否为数字 */
+  isNumber(obj: any): obj is number;
+  /** 判断是否为对象 */
+  isObject(obj: any): obj is object;
+  /** 判断是否为字符串 */
+  isString(obj: any): obj is string;
+  /** 判断是否为`symbol`型 */
+  isSymbol(obj: any): obj is symbol;
 }
 interface anyObj {
   [index: any]: any;
