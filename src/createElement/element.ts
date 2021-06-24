@@ -39,21 +39,21 @@ function createElement<K extends keyof HTMLElementTagNameMap, P>(
     return el;
   }
 }
-function createElements<K extends keyof HTMLElementTagNameMap, P>(
+function createElements<Tag extends keyof HTMLElementTagNameMap, Elem extends HTMLElement, P>(
   props: (
     | {
-        tagName: K;
-        props?: createHTMLElementPropsMap[K];
+        tagName: Tag;
+        props?: createHTMLElementPropsMap[Tag];
         children?: acceptableChildren;
       }
     | {
-        customElement: (props: P, children?: acceptableChildren) => HTMLElementTagNameMap[K];
+        customElement: (props: P, children?: acceptableChildren) => Elem;
         props: P;
         children?: acceptableChildren;
       }
     | string
   )[]
-): Array<HTMLElementTagNameMap[K]> {
+): Array<HTMLElementTagNameMap[Tag] | Elem | HTMLSpanElement> {
   // 断言这是一个数组
   assert(props instanceof Array, 'createElements 方法只接受一个数组作为有效输入');
   return props.map((p) => {
