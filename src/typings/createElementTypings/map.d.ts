@@ -4,7 +4,7 @@ interface createHTMLElementPropsMap {
   abbr: createHTMLElementProps;
   address: createHTMLElementProps;
   /** @deprecated **警告：请勿使用** */
-  applet: createHTMLElementProps; // HTMLAppletElement;
+  applet: createHTMLElementProps; // HTMLAppletElement; // 这个还是用 createHTMLElementProps吧
   area: createHTMLAreaElementProps;
   article: createHTMLElementProps;
   aside: createHTMLElementProps;
@@ -12,13 +12,13 @@ interface createHTMLElementPropsMap {
   b: createHTMLElementProps;
   base: createHTMLBaseElementProps;
   /** @deprecated **警告：请勿使用** */
-  basefont: createHTMLElementProps; // HTMLBaseFontElement;
+  basefont: createHTMLElementProps; // HTMLBaseFontElement; // 这个还是用 createHTMLElementProps吧
   bdi: createHTMLElementProps;
   bdo: createHTMLElementProps;
-  blockquote: createHTMLElementProps; // HTMLQuoteElement;
-  body: createHTMLElementProps; // HTMLBodyElement;
+  blockquote: createHTMLQuoteElementProps;
+  body: createHTMLElementProps; // HTMLBodyElement; // 这个还是用 createHTMLElementProps吧
   br: createHTMLElementProps; // HTMLBRElement; // 这个还是用 createHTMLElementProps吧
-  button: createHTMLElementProps; // HTMLButtonElement;
+  button: createHTMLButtonElementProps;
   canvas: createHTMLElementProps; // HTMLCanvasElement;
   caption: createHTMLElementProps; // HTMLTableCaptionElement;
   cite: createHTMLElementProps;
@@ -57,7 +57,7 @@ interface createHTMLElementPropsMap {
   header: createHTMLElementProps;
   hgroup: createHTMLElementProps;
   hr: createHTMLElementProps; // HTMLHRElement; // 这个还是用 createHTMLElementProps吧
-  html: createHTMLElementProps; // HTMLHtmlElement;
+  html: createHTMLElementProps; // HTMLHtmlElement; // 这个还是用 createHTMLElementProps吧
   i: createHTMLElementProps;
   iframe: createHTMLElementProps; // HTMLIFrameElement;
   img: createHTMLElementProps; // HTMLImageElement;
@@ -87,7 +87,7 @@ interface createHTMLElementPropsMap {
   picture: createHTMLElementProps; // HTMLPictureElement;
   pre: createHTMLElementProps; // HTMLPreElement;
   progress: createHTMLElementProps; // HTMLProgressElement;
-  q: createHTMLElementProps; // HTMLQuoteElement;
+  q: createHTMLQuoteElementProps;
   rp: createHTMLElementProps;
   rt: createHTMLElementProps;
   ruby: createHTMLElementProps;

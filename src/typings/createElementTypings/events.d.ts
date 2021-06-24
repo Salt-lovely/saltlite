@@ -1,18 +1,12 @@
 interface GlobalHTMLElemetEventProps {
-  /**
-   * Fires when the user aborts the download.
-   * @param ev The event.
-   */
+  /** 下载取消事件 */
   onAbort?: ((this: GlobalEventHandlers, ev: UIEvent) => any) | null;
   onAnimationCancel?: ((this: GlobalEventHandlers, ev: AnimationEvent) => any) | null;
   onAnimationEnd?: ((this: GlobalEventHandlers, ev: AnimationEvent) => any) | null;
   onAnimationIteration?: ((this: GlobalEventHandlers, ev: AnimationEvent) => any) | null;
   onAnimationStart?: ((this: GlobalEventHandlers, ev: AnimationEvent) => any) | null;
   onAuxClick?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
-  /**
-   * Fires when the object loses the input focus.
-   * @param ev The focus event.
-   */
+  /** 对象失去焦点事件 */
   onBlur?: ((this: GlobalEventHandlers, ev: FocusEvent) => any) | null;
   onCancel?: ((this: GlobalEventHandlers, ev: Event) => any) | null;
   /**
@@ -21,10 +15,7 @@ interface GlobalHTMLElemetEventProps {
    */
   onCanplay?: ((this: GlobalEventHandlers, ev: Event) => any) | null;
   onCanplayThrough?: ((this: GlobalEventHandlers, ev: Event) => any) | null;
-  /**
-   * Fires when the contents of the object or selection have changed.
-   * @param ev The event.
-   */
+  /** 对象或选择区域内容变化事件 */
   onChange?: ((this: GlobalEventHandlers, ev: Event) => any) | null;
   /** 点击事件 */
   onClick?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
@@ -84,38 +75,24 @@ interface GlobalHTMLElemetEventProps {
    * @param ev The event
    */
   onEnded?: ((this: GlobalEventHandlers, ev: Event) => any) | null;
-  /**
-   * Fires when an error occurs during object loading.
-   * @param ev The event.
-   */
+  /** 加载资源出错事件 */
   onError?: OnErrorEventHandler;
-  /**
-   * Fires when the object receives focus.
-   * @param ev The event.
-   */
+  /** 元素获取焦点事件 */
   onFocus?: ((this: GlobalEventHandlers, ev: FocusEvent) => any) | null;
   onGotPointerCapture?: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
   onInput?: ((this: GlobalEventHandlers, ev: Event) => any) | null;
   onInvalid?: ((this: GlobalEventHandlers, ev: Event) => any) | null;
-  /**
-   * Fires when the user presses a key.
-   * @param ev The keyboard event
-   */
+
+  // 键盘事件
+  /** 按下键盘事件 */
   onKeyDown?: ((this: GlobalEventHandlers, ev: KeyboardEvent) => any) | null;
-  /**
-   * Fires when the user presses an alphanumeric key.
-   * @param ev The event.
-   */
+  /** 完成键盘敲击事件 */
   onKeyPress?: ((this: GlobalEventHandlers, ev: KeyboardEvent) => any) | null;
-  /**
-   * Fires when the user releases a key.
-   * @param ev The keyboard event
-   */
+  /** 松开键盘事件 */
   onKeyUp?: ((this: GlobalEventHandlers, ev: KeyboardEvent) => any) | null;
-  /**
-   * Fires immediately after the browser loads the object.
-   * @param ev The event.
-   */
+
+  // 资源事件
+  /** 资源加载事件 */
   onLoad?: ((this: GlobalEventHandlers, ev: Event) => any) | null;
   /**
    * Occurs when media data is loaded at the current playback position.
@@ -133,6 +110,8 @@ interface GlobalHTMLElemetEventProps {
    */
   onLoadStart?: ((this: GlobalEventHandlers, ev: Event) => any) | null;
   onLostPointerCapture?: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+
+  // 鼠标事件
   /** 鼠标按下事件 */
   onMouseDown?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
   /** 鼠标进入事件 */
@@ -175,10 +154,7 @@ interface GlobalHTMLElemetEventProps {
    * @param ev The event.
    */
   onProgress?: ((this: GlobalEventHandlers, ev: ProgressEvent) => any) | null;
-  /**
-   * Occurs when the playback rate is increased or decreased.
-   * @param ev The event.
-   */
+  /** 播放速度变化事件 */
   onRateChange?: ((this: GlobalEventHandlers, ev: Event) => any) | null;
   /**
    * Fires when the user resets a form.
@@ -226,18 +202,22 @@ interface GlobalHTMLElemetEventProps {
    */
   onTimeupDate?: ((this: GlobalEventHandlers, ev: Event) => any) | null;
   onToggle?: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+
+  // 触摸事件
+  /** 触摸取消事件 */
   onTouchCancel?: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null;
+  /** 触摸结束事件 */
   onTouchEnd?: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null;
+  /** 手指移动事件 */
   onTouchMove?: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null;
+  /** 触摸开始事件 */
   onTouchStart?: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null;
+
   onTransitionCancel?: ((this: GlobalEventHandlers, ev: TransitionEvent) => any) | null;
   onTransitionEnd?: ((this: GlobalEventHandlers, ev: TransitionEvent) => any) | null;
   onTransitionRun?: ((this: GlobalEventHandlers, ev: TransitionEvent) => any) | null;
   onTransitionStart?: ((this: GlobalEventHandlers, ev: TransitionEvent) => any) | null;
-  /**
-   * Occurs when the volume is changed, or playback is muted or unmuted.
-   * @param ev The event.
-   */
+  /** 音量更改事件 */
   onVolumeChange?: ((this: GlobalEventHandlers, ev: Event) => any) | null;
   /**
    * Occurs when playback stops because the next frame of a video resource is not available.

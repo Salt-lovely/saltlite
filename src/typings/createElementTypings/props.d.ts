@@ -84,36 +84,83 @@ interface createHTMLBaseElementProps extends createHTMLElementProps {
   /** 在何处显示链接的资源 */
   target?: targetEnum;
 }
+// blockquote 和 quote
+interface createHTMLQuoteElementProps extends createHTMLElementProps {
+  /** 引用内容的来源 */
+  cite?: string;
+}
+// button
+interface createHTMLButtonElementProps extends createHTMLElementProps {
+  /** 按钮是否为无效状态 */
+  disabled?: boolean;
+  /**
+   * Overrides the action attribute (where the data on a form is sent) on the parent form element.
+   */
+  formAction?: string;
+  /**
+   * Used to override the encoding (formEnctype attribute) specified on the form element.
+   */
+  formEnctype?: string;
+  /**
+   * Overrides the submit method attribute previously specified on a form element.
+   */
+  formMethod?: string;
+  /**
+   * Overrides any validation or required attributes on a form or form elements to allow it to be submitted without validation. This can be used to create a "save draft"-type submit option.
+   */
+  formNoValidate?: boolean;
+  /**
+   * Overrides the target attribute on a form element.
+   */
+  formTarget?: string;
+  /** 按钮的名称属性 */
+  name?: string;
+  /**
+   * Gets the classification and default behavior of the button.
+   */
+  type?: string;
+  /**
+   * Sets or retrieves the default or selected value of the control.
+   */
+  value?: string;
+}
+// canvas
+interface createHTMLCanvasElementProps extends createHTMLElementProps {
+  /** 元素高度 */
+  height?: number;
+  /** 元素宽度 */
+  width?: number;
+}
 // font
 interface createHTMLFontElementProps extends createHTMLElementProps {
   /** @deprecated 文字颜色 */
-  color: string;
+  color?: string;
   /** @deprecated 文字字体 */
-  face: string;
+  face?: string;
   /** @deprecated 文字大小或相对大小 */
-  size: string;
+  size?: string;
 }
 // script
 interface createHTMLScriptElementProps extends createHTMLElementProps {
   /** 异步执行 */
-  async: boolean;
+  async?: boolean;
   /** @deprecated */
-  charset: string;
+  charset?: string;
   /** 跨域设置 */
-  crossOrigin: crossOriginEnum;
+  crossOrigin?: crossOriginEnum;
   /** 延迟执行 */
-  defer: boolean;
+  defer?: boolean;
   /** 脚本资源的URL */
-  src: string;
+  src?: string;
 }
 // video
 interface createHTMLVideoElementProps extends createHTMLElementProps, createHTMLMediaElementPropsUtils {
   /** 元素高度 */
-  height: number;
+  height?: number;
   /** 兼容性设置, 一般情况下请忽略, 设为true则视频将默认在元素范围内播放 */
-  playsInline: boolean;
+  playsInline?: boolean;
   /** 视频封面URL */
-  poster: string;
+  poster?: string;
   /** 元素宽度 */
-  width: number;
+  width?: number;
 }
