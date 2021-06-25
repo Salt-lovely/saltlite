@@ -58,7 +58,7 @@ interface SaltCreateElements {
     }[]
   ): Array<HTMLElementTagNameMap[Tag]>;
   // customElement
-  <Elem extends HTMLElement, P>(
+  <Elem extends AllHTMLElementMap, P>(
     props: {
       customElement: (props: P, children?: acceptableChildren) => Elem;
       props: P;
@@ -77,7 +77,7 @@ interface SaltCreateElements {
     )[]
   ): Array<HTMLElementTagNameMap[Tag] | HTMLSpanElement>;
   // 字符串 customElement
-  <Elem extends HTMLElement, P>(
+  <Elem extends AllHTMLElementMap, P>(
     props: (
       | {
           customElement: (props: P, children?: acceptableChildren) => Elem;
@@ -88,7 +88,7 @@ interface SaltCreateElements {
     )[]
   ): Array<Elem | HTMLSpanElement>;
   // tagname customElement
-  <Tag extends keyof HTMLElementTagNameMap, Elem extends HTMLElement, P>(
+  <Tag extends keyof HTMLElementTagNameMap, Elem extends AllHTMLElementMap, P>(
     props: (
       | {
           tagName: Tag;
@@ -102,7 +102,7 @@ interface SaltCreateElements {
         }
     )[]
   ): Array<HTMLElementTagNameMap[Tag] | Elem>;
-  <Tag extends keyof HTMLElementTagNameMap, Elem extends HTMLElement, P>(
+  <Tag extends keyof HTMLElementTagNameMap, Elem extends AllHTMLElementMap, P>(
     props: (
       | {
           tagName: Tag;

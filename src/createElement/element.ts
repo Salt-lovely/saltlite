@@ -39,7 +39,7 @@ function createElement<K extends keyof HTMLElementTagNameMap, P>(
     return el;
   }
 }
-function createElements<Tag extends keyof HTMLElementTagNameMap, Elem extends HTMLElement, P>(
+function createElements<Tag extends keyof HTMLElementTagNameMap, Elem extends AllHTMLElementMap, P>(
   props: (
     | {
         tagName: Tag;
