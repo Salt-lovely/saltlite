@@ -20,7 +20,7 @@ interface SaltSafe {
    */
   forSafePropsInObject<T extends object, P extends Extract<keyof T, string>>(
     obj: T,
-    fn: (propName: P, value: T[P]) => void,
+    fn?: (propName: P, value: T[P]) => void,
     deleteUnsafeProp = false
   ): T;
 }
