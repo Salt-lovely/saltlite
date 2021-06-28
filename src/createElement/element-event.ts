@@ -111,20 +111,24 @@ function eventNameFix<K extends keyof HTMLElementTagNameMap>(
   element: HTMLElementTagNameMap[K],
   props: createHTMLElementProps
 ) {
-  forSafePropsInObject(props, (p, v) => {
-    // 事件属性名必须是o开头的字符串
-    if (typeof p !== 'string' || p[0].toLocaleLowerCase() !== 'o') {
-      return;
-    }
-    const lc = p.toLocaleLowerCase();
-    if (eventName.has(lc) && p !== lc) {
-      // 使用 addEventListener 添加监听
-      // @ts-ignore
-      if (typeof v === 'function') element.addEventListener(eventName.get(lc)!, v, false);
-      // 不管是不是有效方法，都要删除属性
-      // @ts-ignore ts(2590)
-      props[p] = undefined;
-    }
-  });
+  forSafePropsInObject(
+    props,
+    (p, v) => {
+      // 事件属性名必须是o开头的字符串
+      if (typeof p !== 'string' || p[0].toLocaleLowerCase() !== 'o') {
+        return;
+      }
+      const lc = p.toLocaleLowerCase();
+      if (eventName.has(lc) && p !== lc) {
+        // 使用 addEventListener 添加监听
+        // @ts-ignore
+        if (typeof v === 'function') element.addEventListener(eventName.get(lc)!, v, false);
+        // 不管是不是有效方法，都要删除属性
+        // @ts-ignore ts(2590)
+        props[p] = undefined;
+      }
+    },
+    true
+  );
 }
 export { eventNameFix };
