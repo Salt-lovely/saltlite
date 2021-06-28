@@ -1,7 +1,9 @@
-import { forSafePropsInObject, isSafePropName } from '../safe/unsafeProps';
+import { forSafePropsInObject } from '../safe/unsafeProps';
+import { isFunction, isObject, isString } from '../util/typeGuard';
 import { assert } from '../util/utils';
 import { eventNameFix } from './element-event';
 
+// 两个重载
 function createElement<K extends keyof HTMLElementTagNameMap>(
   tagName: K,
   props?: createHTMLElementPropsMap[K],
@@ -12,22 +14,27 @@ function createElement<K extends keyof HTMLElementTagNameMap, P>(
   props: P,
   children?: acceptableChildren
 ): HTMLElementTagNameMap[K];
+// 实现
 function createElement<K extends keyof HTMLElementTagNameMap, P>(
   argu1: K | ((props?: P, children?: acceptableChildren) => HTMLElementTagNameMap[K]),
   props: createHTMLElementPropsMap[K] | P,
   children?: acceptableChildren
 ): HTMLElementTagNameMap[K] {
-  if (typeof argu1 === 'function') {
+  if (isFunction(argu1)) {
     return argu1(props as P, children);
-  } else {
-    const el = document.createElement(argu1 as K);
-    if (typeof props === 'object') {
+  } else if (isString(argu1)) {
+    const el = document.createElement(argu1);
+    if (isObject(props) && props) {
       // 处理事件
       eventNameFix(el, props);
-      forSafePropsInObject(props as createHTMLElementPropsMap[K], (p, v) => {
-        // @ts-ignore
-        el[p] = v; // 这一步是属于js的魔法
-      });
+      forSafePropsInObject(
+        props,
+        (p, v) => {
+          // @ts-ignore
+          el[p] = v; // 这一步是属于js的魔法
+        },
+        false
+      );
     }
     if (children) {
       if (children instanceof Array) {
@@ -37,6 +44,8 @@ function createElement<K extends keyof HTMLElementTagNameMap, P>(
       else if (children instanceof Node) el.appendChild(children);
     }
     return el;
+  } else {
+    return <never>createElement('span');
   }
 }
 function createElements<Tag extends keyof HTMLElementTagNameMap, Elem extends AllHTMLElementMap, P>(
