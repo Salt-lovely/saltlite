@@ -6,22 +6,22 @@ import { eventNameFix } from './element-event';
 // 两个重载
 function createElement<K extends keyof HTMLElementTagNameMap>(
   tagName: K,
-  props?: createHTMLElementPropsMap[K],
-  children?: acceptableChildren
+  props?: createHTMLElementPropsMap[K] | null,
+  children?: acceptableChildren | null
 ): HTMLElementTagNameMap[K];
 function createElement<K extends keyof HTMLElementTagNameMap, P>(
   customElement: (props: P, children?: acceptableChildren) => HTMLElementTagNameMap[K],
   props: P,
-  children?: acceptableChildren
+  children?: acceptableChildren | null
 ): HTMLElementTagNameMap[K];
 // 实现
 function createElement<K extends keyof HTMLElementTagNameMap, P>(
   argu1: K | ((props?: P, children?: acceptableChildren) => HTMLElementTagNameMap[K]),
-  props: createHTMLElementPropsMap[K] | P,
-  children?: acceptableChildren
+  props: createHTMLElementPropsMap[K] | null | P,
+  children?: acceptableChildren | null
 ): HTMLElementTagNameMap[K] {
   if (isFunction(argu1)) {
-    return argu1(props as P, children);
+    return argu1(props as P, children ? children : undefined);
   } else if (isString(argu1)) {
     const el = document.createElement(argu1);
     if (isObject(props) && props) {

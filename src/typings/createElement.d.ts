@@ -16,8 +16,8 @@ interface SaltCreateElement {
    */
   createElement<K extends keyof HTMLElementTagNameMap>(
     tagName: K,
-    props?: createHTMLElementPropsMap[K],
-    children?: acceptableChildren
+    props?: createHTMLElementPropsMap[K] | null,
+    children?: acceptableChildren | null
   ): HTMLElementTagNameMap[K];
   /**
    * 创建一**个** HTMLElement 而不用写大量的赋值语句
@@ -32,7 +32,7 @@ interface SaltCreateElement {
   createElement<K extends keyof HTMLElementTagNameMap, P>(
     customElement: (props: P, children?: acceptableChildren) => HTMLElementTagNameMap[K],
     props: P,
-    children?: acceptableChildren
+    children?: acceptableChildren | null
   ): HTMLElementTagNameMap[K];
   /**
    * 创建一**堆** HTMLElement 而不用写大量的赋值语句
