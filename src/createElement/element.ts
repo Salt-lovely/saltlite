@@ -42,6 +42,8 @@ function createElement<K extends keyof HTMLElementTagNameMap, P>(
       }
       // 因为 DocumentFragment 属于 Node
       else if (children instanceof Node) el.appendChild(children);
+      // 或者是个字符串
+      else if (isString(children)) el.appendChild(document.createTextNode(children));
     }
     return el;
   } else {
