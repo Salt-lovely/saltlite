@@ -62,6 +62,6 @@ Use Chrome or Firefox if u can, forget Safari if u can, DONOT try IE even if u c
 
 ## 许可证 License
 
-木兰宽松许可证 第一版
+木兰宽松许可证 第二版
 
-Mulan Permissive Software License，Version 1
+Mulan Permissive Software License，Version 2
