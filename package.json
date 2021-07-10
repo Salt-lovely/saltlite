@@ -27,8 +27,8 @@
     }
   ],
   "scripts": {
-    "devbuild": "esbuild ./src/entry.ts --bundle --charset=utf8 --target=es2015 --define:process.env.NODE_ENV=development --outfile=dist/SaltLite.js",
-    "minbuild": "esbuild ./src/entry.ts --bundle --charset=utf8 --target=es2015 --define:process.env.NODE_ENV=production --legal-comments=eof --minify --outfile=dist/SaltLite.min.js",
+    "devbuild": "esbuild ./src/entry.ts --bundle --charset=utf8 --target=es2015 --platform=browser --outfile=dist/SaltLite.js",
+    "minbuild": "esbuild ./src/entry.ts --bundle --charset=utf8 --target=es2015 --platform=browser --legal-comments=eof --minify --outfile=dist/SaltLite.min.js",
     "build": "npm run devbuild & npm run minbuild"
   },
   "dependencies": {},
