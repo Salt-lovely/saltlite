@@ -1,6 +1,6 @@
 import * as unsafeProps from './unsafeProps';
 
-const safe = {
+const safe: SaltSafe = {
   ...unsafeProps,
 };
 

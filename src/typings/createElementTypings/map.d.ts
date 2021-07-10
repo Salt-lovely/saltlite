@@ -1,82 +1,24 @@
-interface createHTMLElementProps {
-  /** 元素id */
-  id?: string;
-  /** 元素类名 */
-  className?: string;
-  /** 元素提示 */
-  title?: string;
-  /** 元素的文字内容 */
-  textContent?: string;
-  /** 元素访问的快捷键 */
-  accessKey?: string;
-  /** 元素内容方向 */
-  dir?: string;
-  /** 元素是否隐藏 */
-  hidden?: boolean;
-  /** 元素内容的语言 */
-  lang?: string;
-  /** 点击事件 */
-  onClick?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
-  /** 双击事件 */
-  onDblClick?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
-  /** 鼠标按下事件 */
-  onMouseDown?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
-  /** 鼠标进入事件 */
-  onMouseEnter?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
-  /** 鼠标离开事件 */
-  onMouseLeave?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
-  /** 鼠标移动事件 */
-  onMouseMove?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
-  /** 鼠标进入事件 **鼠标进入子元素时也会触发, 不推荐使用** */
-  onMouseOver?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
-  /** 鼠标离开事件 **鼠标离开子元素时也会触发, 不推荐使用** */
-  onMouseOut?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
-  /** 鼠标松开事件 */
-  onMouseUp?: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
-}
-
-interface createHTMLHyperlinkElementPropsUtils {
-  /** 链接 */
-  href?: string;
-  /** 设置哈希, 即`#`后面的部分 */
-  hash?: string;
-  // /** 链接的主机及端口名 */
-  // host?: string;
-  // /** 链接的主机名 */
-  // hostname?: string;
-}
-
-interface createHTMLAnchorElementProps extends createHTMLElementProps, createHTMLHyperlinkElementPropsUtils {
-  /** 链接到资源的语言 */
-  hreflang?: string;
-  /** 链接到媒体的类型 */
-  media?: string;
-}
-interface createHTMLAreaElementProps extends createHTMLElementProps, createHTMLHyperlinkElementPropsUtils {
-  /** 代替的文本字符串 */
-  alt?: string;
-  /** 热点区域的具体坐标值 */
-  coords?: string;
-  download?: string;
-}
+/// <reference path="./props.d.ts" />
 interface createHTMLElementPropsMap {
   a: createHTMLAnchorElementProps;
   abbr: createHTMLElementProps;
   address: createHTMLElementProps;
-  applet: createHTMLElementProps; // HTMLAppletElement;
+  /** @deprecated **警告：请勿使用** */
+  applet: createHTMLElementProps; // HTMLAppletElement; // 这个还是用 createHTMLElementProps吧
   area: createHTMLAreaElementProps;
   article: createHTMLElementProps;
   aside: createHTMLElementProps;
-  audio: createHTMLElementProps; // HTMLAudioElement;
+  audio: createHTMLAudioElementProps;
   b: createHTMLElementProps;
-  base: createHTMLElementProps; // HTMLBaseElement;
-  basefont: createHTMLElementProps; // HTMLBaseFontElement;
+  base: createHTMLBaseElementProps;
+  /** @deprecated **警告：请勿使用** */
+  basefont: createHTMLElementProps; // HTMLBaseFontElement; // 这个还是用 createHTMLElementProps吧
   bdi: createHTMLElementProps;
   bdo: createHTMLElementProps;
-  blockquote: createHTMLElementProps; // HTMLQuoteElement;
-  body: createHTMLElementProps; // HTMLBodyElement;
+  blockquote: createHTMLQuoteElementProps;
+  body: createHTMLElementProps; // HTMLBodyElement; // 这个还是用 createHTMLElementProps吧
   br: createHTMLElementProps; // HTMLBRElement; // 这个还是用 createHTMLElementProps吧
-  button: createHTMLElementProps; // HTMLButtonElement;
+  button: createHTMLButtonElementProps;
   canvas: createHTMLElementProps; // HTMLCanvasElement;
   caption: createHTMLElementProps; // HTMLTableCaptionElement;
   cite: createHTMLElementProps;
@@ -91,7 +33,7 @@ interface createHTMLElementPropsMap {
   dfn: createHTMLElementProps;
   dialog: createHTMLElementProps; // HTMLDialogElement;
   dir: createHTMLElementProps; // HTMLDirectoryElement;
-  div: createHTMLElementProps; // HTMLDivElement;
+  div: createHTMLElementProps; // HTMLDivElement; // 这个还是用 createHTMLElementProps吧
   dl: createHTMLElementProps; // HTMLDListElement;
   dt: createHTMLElementProps;
   em: createHTMLElementProps;
@@ -99,7 +41,8 @@ interface createHTMLElementPropsMap {
   fieldset: createHTMLElementProps; // HTMLFieldSetElement;
   figcaption: createHTMLElementProps;
   figure: createHTMLElementProps;
-  font: createHTMLElementProps; // HTMLFontElement;
+  /** @deprecated **警告：谨慎使用** */
+  font: createHTMLFontElementProps;
   footer: createHTMLElementProps;
   form: createHTMLElementProps; // HTMLFormElement;
   frame: createHTMLElementProps; // HTMLFrameElement;
@@ -113,8 +56,8 @@ interface createHTMLElementPropsMap {
   head: createHTMLElementProps; // HTMLHeadElement; // 这个还是用 createHTMLElementProps吧
   header: createHTMLElementProps;
   hgroup: createHTMLElementProps;
-  hr: createHTMLElementProps; // HTMLHRElement;
-  html: createHTMLElementProps; // HTMLHtmlElement;
+  hr: createHTMLElementProps; // HTMLHRElement; // 这个还是用 createHTMLElementProps吧
+  html: createHTMLElementProps; // HTMLHtmlElement; // 这个还是用 createHTMLElementProps吧
   i: createHTMLElementProps;
   iframe: createHTMLElementProps; // HTMLIFrameElement;
   img: createHTMLElementProps; // HTMLImageElement;
@@ -144,19 +87,19 @@ interface createHTMLElementPropsMap {
   picture: createHTMLElementProps; // HTMLPictureElement;
   pre: createHTMLElementProps; // HTMLPreElement;
   progress: createHTMLElementProps; // HTMLProgressElement;
-  q: createHTMLElementProps; // HTMLQuoteElement;
+  q: createHTMLQuoteElementProps;
   rp: createHTMLElementProps;
   rt: createHTMLElementProps;
   ruby: createHTMLElementProps;
   s: createHTMLElementProps;
   samp: createHTMLElementProps;
-  script: createHTMLElementProps; // HTMLScriptElement;
+  script: createHTMLScriptElementProps;
   section: createHTMLElementProps;
   select: createHTMLElementProps; // HTMLSelectElement;
   slot: createHTMLElementProps; // HTMLSlotElement;
   small: createHTMLElementProps;
   source: createHTMLElementProps; // HTMLSourceElement;
-  span: createHTMLElementProps; // HTMLSpanElement;
+  span: createHTMLElementProps; // HTMLSpanElement; // 这个还是用 createHTMLElementProps吧
   strong: createHTMLElementProps;
   style: createHTMLElementProps; // HTMLStyleElement;
   sub: createHTMLElementProps;
@@ -175,8 +118,127 @@ interface createHTMLElementPropsMap {
   tr: createHTMLElementProps; // HTMLTableRowElement;
   track: createHTMLElementProps; // HTMLTrackElement;
   u: createHTMLElementProps;
-  ul: createHTMLElementProps; // HTMLUListElement;
+  ul: createHTMLElementProps; // HTMLUListElement; // 这个还是用 createHTMLElementProps吧
   var: createHTMLElementProps;
-  video: createHTMLElementProps; // HTMLVideoElement;
+  video: createHTMLVideoElementProps;
   wbr: createHTMLElementProps;
 }
+type AllHTMLElementMap =
+  | HTMLAnchorElement
+  | HTMLElement
+  | HTMLElement
+  | HTMLAppletElement
+  | HTMLAreaElement
+  | HTMLElement
+  | HTMLElement
+  | HTMLAudioElement
+  | HTMLElement
+  | HTMLBaseElement
+  | HTMLElement
+  | HTMLElement
+  | HTMLQuoteElement
+  | HTMLBodyElement
+  | HTMLBRElement
+  | HTMLButtonElement
+  | HTMLCanvasElement
+  | HTMLTableCaptionElement
+  | HTMLElement
+  | HTMLElement
+  | HTMLTableColElement
+  | HTMLTableColElement
+  | HTMLDataElement
+  | HTMLDataListElement
+  | HTMLElement
+  | HTMLModElement
+  | HTMLDetailsElement
+  | HTMLElement
+  | HTMLDialogElement
+  | HTMLDirectoryElement
+  | HTMLDivElement
+  | HTMLDListElement
+  | HTMLElement
+  | HTMLElement
+  | HTMLEmbedElement
+  | HTMLFieldSetElement
+  | HTMLElement
+  | HTMLElement
+  | HTMLFontElement
+  | HTMLElement
+  | HTMLFormElement
+  | HTMLFrameElement
+  | HTMLFrameSetElement
+  | HTMLHeadingElement
+  | HTMLHeadingElement
+  | HTMLHeadingElement
+  | HTMLHeadingElement
+  | HTMLHeadingElement
+  | HTMLHeadingElement
+  | HTMLHeadElement
+  | HTMLElement
+  | HTMLElement
+  | HTMLHRElement
+  | HTMLHtmlElement
+  | HTMLElement
+  | HTMLIFrameElement
+  | HTMLImageElement
+  | HTMLInputElement
+  | HTMLModElement
+  | HTMLElement
+  | HTMLLabelElement
+  | HTMLLegendElement
+  | HTMLLIElement
+  | HTMLLinkElement
+  | HTMLElement
+  | HTMLMapElement
+  | HTMLElement
+  | HTMLMarqueeElement
+  | HTMLMenuElement
+  | HTMLMetaElement
+  | HTMLMeterElement
+  | HTMLElement
+  | HTMLElement
+  | HTMLObjectElement
+  | HTMLOListElement
+  | HTMLOptGroupElement
+  | HTMLOptionElement
+  | HTMLOutputElement
+  | HTMLParagraphElement
+  | HTMLParamElement
+  | HTMLPictureElement
+  | HTMLPreElement
+  | HTMLProgressElement
+  | HTMLQuoteElement
+  | HTMLElement
+  | HTMLElement
+  | HTMLElement
+  | HTMLElement
+  | HTMLElement
+  | HTMLScriptElement
+  | HTMLElement
+  | HTMLSelectElement
+  | HTMLSlotElement
+  | HTMLElement
+  | HTMLSourceElement
+  | HTMLSpanElement
+  | HTMLElement
+  | HTMLStyleElement
+  | HTMLElement
+  | HTMLElement
+  | HTMLElement
+  | HTMLTableElement
+  | HTMLTableSectionElement
+  | HTMLTableDataCellElement
+  | HTMLTemplateElement
+  | HTMLTextAreaElement
+  | HTMLTableSectionElement
+  | HTMLTableHeaderCellElement
+  | HTMLTableSectionElement
+  | HTMLTimeElement
+  | HTMLTitleElement
+  | HTMLTableRowElement
+  | HTMLTrackElement
+  | HTMLElement
+  | HTMLUListElement
+  | HTMLElement
+  | HTMLVideoElement
+  | HTMLElement;

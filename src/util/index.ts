@@ -1,9 +1,11 @@
-import * as elements from './element';
 import * as utils from './utils';
 import * as localStorage from './localstorage';
+import * as typeGuard from './typeGuard';
+import * as extend from './extends';
 const util: SaltUtil = {
-  ...elements,
   ...utils,
   ...localStorage,
+  ...typeGuard,
+  ...extend,
 };
 export default util;
