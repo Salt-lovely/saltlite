@@ -1,4 +1,5 @@
 /// <reference path="./polyfill.d.ts" />
+/// <reference path="./extends.d.ts" />
 /// <reference path="./safe.d.ts" />
 /// <reference path="./createElement.d.ts" />
 /// <reference path="./query.d.ts" />

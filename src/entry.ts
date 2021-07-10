@@ -15,7 +15,8 @@ MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
 See the Mulan PSL v2 for more details.
 */
 // 整个SaltLite的入口
-import polyfillAndMore from './polyfill/index';
+import polyfill from './polyfill/index';
+import nativeExtend from './extends/index';
 import safe from './safe/index';
 import element from './createElement/index';
 import util from './util/index';
@@ -34,8 +35,11 @@ console.log(
   'color: royalblue; background-color: #fffaf0;'
 );
 
-// 垫片, 不止垫片
-polyfillAndMore(polyfillURL);
+// 垫片
+polyfill(polyfillURL);
+
+// 扩展原生对象
+nativeExtend();
 
 /** 全局对象 */
 const global: any = util.getGlobalThis();

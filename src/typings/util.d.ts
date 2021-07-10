@@ -49,6 +49,23 @@ interface SaltUtil {
   isString(obj: any): obj is string;
   /** 判断是否为`symbol`型 */
   isSymbol(obj: any): obj is symbol;
+  /** 判断是不是未定义类型 */
+  isUndefined(obj: any): obj is undefined;
+  /**
+   *
+   * @param obj 被扩展对象
+   * @param prop 扩展对象
+   * @param options 扩展选项, 默认使用**不可枚举、可编辑、可覆写**
+   */
+  extend<O extends object, N extends object>(
+    obj: O,
+    prop: N,
+    options?: {
+      enumerable?: boolean;
+      configurable?: boolean;
+      writable?: boolean;
+    }
+  ): O;
 }
 interface anyObj {
   [index: any]: any;
