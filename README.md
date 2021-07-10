@@ -28,24 +28,22 @@ SaltLite
 ╚ src ┄ 源代码
     ╟ entry.ts ┄ 入口
     ╟ query.ts ┄ DOM 查询方法, 因为太少了所以不放文件夹里
-    ╟ index.d.ts ┄ 声明文件
     ╠ typings ┄ 声明文件组, 拿这个就可以基于SaltLite写你自己的框架了
     ║  ╟ SaltLite.d.ts ┄ 总的声明文件
     ║  ╙ ***.d.ts ┄ 其他声明文件
-    ╠ polyfill ┄ 并不是垫片, 写了新的方法
+    ╠ polyfill ┄ 垫片
     ║  ╟ index.ts ┄ 方法汇总输出
-    ║  ╟ index.d.ts ┄ 声明文件
+    ╠ extends ┄ 扩展原生对象
+    ║  ╟ index.ts ┄ 方法汇总输出
     ║  ╙ HTMLElement.ts ┄ 给HTMLElement原型添加新方法
     ╠ safe ┄ 安全性检查方法
     ║  ╟ index.ts ┄ 方法汇总输出
     ║  ╙ unsafeProps.ts ┄ 检查属性名是否安全
     ╠ createElement ┄ 创建元素工厂函数及其附属函数
     ║  ╟ index.ts ┄ 方法汇总输出
-    ║  ╟ index.d.ts ┄ 声明文件
     ║  ╙ element.ts ┄ 创建元素工厂函数
     ╚ util ┄ 杂项
         ╟ index.ts ┄ 方法汇总输出
-        ╟ index.d.ts ┄ 声明文件
         ╙ ***.d.ts ┄ 其他杂项方法
 ```
 
