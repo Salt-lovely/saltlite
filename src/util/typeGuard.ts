@@ -10,6 +10,9 @@ function isBigint(obj: any): obj is bigint {
 function isBoolean(obj: any): obj is boolean {
   return typeof obj === 'boolean';
 }
+function isUndefined(obj: any): obj is undefined {
+  return typeof obj === 'undefined';
+}
 function isSymbol(obj: any): obj is symbol {
   return typeof obj === 'symbol';
 }
@@ -30,4 +33,4 @@ function isArray<T>(obj: any, check: (elem: any) => elem is T): obj is Array<T> 
 function isHTMLlement(obj: any): obj is HTMLElement {
   return typeof obj === 'object' && obj instanceof HTMLElement;
 }
-export { isArray, isBigint, isBoolean, isFunction, isHTMLlement, isNumber, isObject, isString, isSymbol };
+export { isArray, isBigint, isBoolean, isFunction, isHTMLlement, isNumber, isObject, isString, isSymbol, isUndefined };
