@@ -3,7 +3,7 @@
 /.pnp
 .pnp.js
 # build
-/dist
+# /dist
 /build
 # testing
 /coverage
@@ -14,6 +14,9 @@
 .env.development.local
 .env.test.local
 .env.production.local
+
+SaltLite.js
+SaltLite.min.js
 
 npm-debug.log*
 yarn-debug.log*

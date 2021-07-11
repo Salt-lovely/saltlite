@@ -31,7 +31,7 @@ const polyfillURL: string | false | undefined = false;
 
 // 打印到控制台
 console.log(
-  '%c SaltLite Frontend Lib, With MulanPSL, By Salt-lovely. ',
+  '%c SaltLite Frontend Lib, Licensed Under MulanPSLv2, By Salt-lovely. ',
   'color: royalblue; background-color: #fffaf0;'
 );
 
