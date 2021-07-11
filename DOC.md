@@ -1,12 +1,40 @@
 # 功能 Functions
 
+注意：推荐使用 Typora 之类的有目录/大纲功能的阅读器。
+
 ## 垫片（polyfill）功能
 
-SaltLite 并不自带垫片功能——或者说，自带了一个超出了垫片范畴的功能，它分为两个部分：
+SaltLite 并不自带垫片功能：
 
 1. 调用在线垫片服务，将入口的`polyfillURL`改为垫片服务地址或`undefined`，将启用这个功能。（我为啥不默认启用？）
-2. 额外的方法，它会给`HTMLElement`等原型添加新的方法，这些方法设计来解决一些不太常见的痛点——比如流式编程。
-3. 流式编程的思想让你的代码更加简洁易懂，减少脏代码，缩小屎山（wading）规模。
+
+## 扩展原生对象
+
+### 扩展 HTMLElement：
+
+```JS
+interface HTMLElement {
+  /** 用法同 `.classList.add` , 为流式编程设计 */
+  addClass(...className: string[]): HTMLElement;
+
+  /** 用法同 `.classList.remove` , 为流式编程设计 */
+  removeClass(...className: string[]): HTMLElement;
+
+  /** 切换类名功能, 可用于流式编程 */
+  toggleClass(...className: string[]): HTMLElement;
+
+  /** 用法同 `.classList.contains` , **不能流式编程**只是为了好看 */
+  hasClass(className: string): boolean;
+
+  /** 将子元素批量附到这个元素上, 可流式编程 */
+  appendChildren(...children: (Node | string)[]): HTMLElement;
+
+  /** 设置元素的行内样式, 可流式编程 */
+  css(prop: string, value: string): HTMLElement;
+  /** 批量设置元素的行内样式, 可流式编程 */
+  css(styles: { [index: string]: string }): HTMLElement;
+}
+```
 
 ## 文档对象模型（DOM）查询
 

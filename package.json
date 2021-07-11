@@ -29,11 +29,13 @@
   "scripts": {
     "devbuild": "esbuild ./src/entry.ts --bundle --charset=utf8 --target=es2015 --platform=browser --outfile=dist/SaltLite.js",
     "minbuild": "esbuild ./src/entry.ts --bundle --charset=utf8 --target=es2015 --platform=browser --legal-comments=eof --minify --outfile=dist/SaltLite.min.js",
-    "build": "npm run devbuild & npm run minbuild"
+    "build": "npm run devbuild & npm run minbuild",
+    "prettier": "prettier -w ./src"
   },
   "dependencies": {},
   "devDependencies": {
-    "typescript": "~4.2.0",
-    "esbulid": "~0.12.9"
+    "esbulid": "^0.12.0",
+    "prettier": "^2.3.0",
+    "typescript": "^4.3.0"
   }
 }
