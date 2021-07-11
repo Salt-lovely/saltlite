@@ -1,6 +1,6 @@
 import { forSafePropsInObject } from '../safe/unsafeProps';
 
-function extend<O extends object, N extends object>(
+export function extend<O extends object, N extends object>(
   obj: O,
   prop: N,
   options?: {
@@ -22,5 +22,3 @@ function extend<O extends object, N extends object>(
   });
   return obj;
 }
-
-export { extend };
