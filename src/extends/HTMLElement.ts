@@ -1,5 +1,6 @@
 import { isSafePropName } from '../safe/unsafeProps';
 import { extend } from '../util/extends';
+import { isObject, isString } from '../util/typeGuard';
 
 export function HTMLElementPlus() {
   extend(HTMLElement.prototype, {
@@ -35,21 +36,20 @@ export function HTMLElementPlus() {
           const frag = document.createDocumentFragment();
           for (const n of children) {
             if (n instanceof Node) frag.appendChild(n);
-            else if (typeof n === 'string') frag.appendChild(document.createTextNode(n));
+            else if (isString(n)) frag.appendChild(document.createTextNode(n));
           }
           this.appendChild(frag);
           return this;
         },
     css: !!HTMLElement.prototype.css
       ? undefined
-      : function (this: HTMLElement) {
-          if (typeof arguments[0] === 'object') {
-            for (const p in arguments[0]) {
-              if (isSafePropName(p) /* && ['string', 'number', 'bigint'].indexOf(typeof arguments[0][p]) !== -1 */)
-                this.style.setProperty(p, arguments[0][p] + '');
+      : function (this: HTMLElement, argu: string | { [index: string]: string }) {
+          if (isObject(argu)) {
+            for (const p in argu) {
+              if (isSafePropName(p)) this.style.setProperty(p, argu[p] + '');
             }
-          } else if (typeof arguments[0] === 'string') {
-            this.style.setProperty(arguments[0], arguments[1] + '');
+          } else if (isString(argu) && isString(arguments[1])) {
+            this.style.setProperty(argu, arguments[1] + '');
           }
           return this;
         },

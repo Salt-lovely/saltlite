@@ -1,15 +1,17 @@
+import { isObject } from './typeGuard';
+
 export function getGlobalThis(): Window {
-  return typeof globalThis !== 'undefined'
+  return isObject(globalThis)
     ? globalThis
-    : typeof window !== 'undefined'
+    : isObject(window)
     ? window
-    : typeof self !== 'undefined'
+    : isObject(self)
     ? self
     : // @ts-ignore
-    typeof global !== 'undefined'
+    isObject(global)
     ? // @ts-ignore
       global
-    : (0, eval)('this'); // 有风险
+    : Function('return this')(); // 有风险
 }
 export function assert(condition: any, message = '出错了'): asserts condition {
   if (!condition) throw new Error(message);

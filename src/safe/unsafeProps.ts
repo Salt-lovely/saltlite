@@ -1,3 +1,5 @@
+import { isUndefined } from '../util/typeGuard';
+
 const unsafePropNames: Set<string | number> = new Set([
   '__proto__',
   'constructor',
@@ -40,7 +42,7 @@ export function forSafePropsInObject<T extends object, P extends Extract<keyof T
   if (deleteUnsafeProp) {
     // 删除可疑属性
     for (const p in obj)
-      if (typeof obj[p] !== 'undefined') {
+      if (!isUndefined(obj[p])) {
         // 忽略undefined项, 仅对不可疑的属性执行回调
         if (isSafePropName(p)) fn(p as P, obj[p as P]);
         // 顺道删掉可疑属性
@@ -50,7 +52,7 @@ export function forSafePropsInObject<T extends object, P extends Extract<keyof T
   } else {
     // 不删除可疑属性
     for (const p in obj) {
-      if (typeof obj[p] !== 'undefined' && isSafePropName(p)) {
+      if (!isUndefined(obj[p]) && isSafePropName(p)) {
         // 忽略undefined项, 仅对不可疑的属性执行回调
         fn(p as P, obj[p as P]);
       }

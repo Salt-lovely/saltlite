@@ -68,9 +68,9 @@ export function createElements<Tag extends keyof HTMLElementTagNameMap, Elem ext
   // 断言这是一个数组
   assert(props instanceof Array, 'createElements 方法只接受一个数组作为有效输入');
   return props.map((p) => {
-    if (typeof p === 'string') return createElement('span', { textContent: p });
+    if (isString(p)) return createElement('span', { textContent: p });
     // @ts-ignore
-    else if (typeof p.tagName === 'string') return createElement(p.tagName, p.props, p.children);
+    else if (isString(p.tagName)) return createElement(p.tagName, p.props, p.children);
     // @ts-ignore
     else return createElement(p.customElement, p.props, p.children);
   });

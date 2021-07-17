@@ -1,3 +1,5 @@
+import { isBoolean, isString } from './typeGuard';
+
 const techprefix = 'SaltLite-';
 /**
  * 根据key存入本地存储
@@ -29,7 +31,7 @@ export function readWithDefault<T>(key: string, defaultValue: T): T {
   let value: string | null = localStorage.getItem(techprefix + key);
   if (value && value != 'undefined' && value != 'null') {
     let temp = <T>JSON.parse(value);
-    if (typeof defaultValue == 'boolean' && typeof temp == 'string') {
+    if (isBoolean(defaultValue) && isString(temp)) {
       // 防坑措施
       if (temp == 'true') {
         // @ts-ignore
