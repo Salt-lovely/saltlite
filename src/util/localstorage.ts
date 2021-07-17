@@ -22,7 +22,7 @@ export function read<T>(key: string): T {
   return <T>(<unknown>null);
 }
 /**
- * 根据key读取本地数据，若没有则写入默认数据
+ * @deprecated 根据key读取本地数据，若没有则写入默认数据
  * @param key 键值
  */
 export function readWithDefault<T>(key: string, defaultValue: T): T {
