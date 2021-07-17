@@ -3,8 +3,9 @@
   "version": "0.3.0",
   "author": "Salt-lovely",
   "description": "Salt lovely's light-weight frontend lib",
-  "main": "src/entry.ts",
-  "types": "src/typings/SaltLite.d.ts",
+  "private": false,
+  "main": "./src/entry.ts",
+  "types": "./src/typings/SaltLite.d.ts",
   "keywords": [
     "front-end",
     "saltlite",
