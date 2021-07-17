@@ -29,12 +29,6 @@ import * as query from './query';
  */
 const polyfillURL: string | false | undefined = false;
 
-// 打印到控制台
-console.log(
-  '%c SaltLite Frontend Lib, Licensed Under MulanPSLv2, By Salt-lovely. ',
-  'color: royalblue; background-color: #fffaf0;'
-);
-
 // 垫片
 polyfill(polyfillURL);
 
@@ -55,8 +49,7 @@ const SaltLite: SaltLite = {
 Object.freeze(SaltLite);
 
 global['SaltLite'] = SaltLite;
-// global['saltlite'] = SaltLite;
-if (!global['sl']) global['sl'] = SaltLite;
-if (!global['SL']) global['SL'] = SaltLite;
+// if (!global['sl']) global['sl'] = SaltLite;
+// if (!global['SL']) global['SL'] = SaltLite;
 
 export default SaltLite;
