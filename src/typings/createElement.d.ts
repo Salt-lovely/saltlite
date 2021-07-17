@@ -35,6 +35,8 @@ interface SaltCreateElement {
     children?: acceptableChildren | null
   ): HTMLElementTagNameMap[K];
   /**
+   * @deprecated
+   *
    * 创建一**堆** HTMLElement 而不用写大量的赋值语句
    *
    * 将调用 createElement 但这个会返回实例数组
