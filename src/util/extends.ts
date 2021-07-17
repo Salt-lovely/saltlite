@@ -1,8 +1,8 @@
 import { forSafePropsInObject } from '../safe/unsafeProps';
 
-export function extend<O extends object, N extends object>(
+export function extend<O extends object>(
   obj: O,
-  prop: N,
+  prop: { [Key in keyof O]?: O[Key] },
   options?: {
     enumerable?: boolean;
     configurable?: boolean;

@@ -57,9 +57,9 @@ interface SaltUtil {
    * @param prop 扩展对象
    * @param options 扩展选项, 默认使用**不可枚举、可编辑、可覆写**
    */
-  extend<O extends object, N extends object>(
+  extend<O extends object>(
     obj: O,
-    prop: N,
+    prop: { [Key in keyof O]?: O[Key] },
     options?: {
       enumerable?: boolean;
       configurable?: boolean;
