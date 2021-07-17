@@ -9,13 +9,13 @@ const unsafePropNames: Set<string | number> = new Set([
   'isPrototypeOf',
   'propertyIsEnumerable',
 ]);
-function isUnsafePropName(propName: string | number) {
+export function isUnsafePropName(propName: string | number) {
   return unsafePropNames.has(propName);
 }
-function isSafePropName(propName: string | number) {
+export function isSafePropName(propName: string | number) {
   return !unsafePropNames.has(propName);
 }
-function filterUnsafeProp<T extends object>(obj: T): T {
+export function filterUnsafeProp<T extends object>(obj: T): T {
   for (const p in obj) {
     if (isUnsafePropName(p)) {
       // @ts-ignore
@@ -24,7 +24,7 @@ function filterUnsafeProp<T extends object>(obj: T): T {
   }
   return obj;
 }
-function forSafePropsInObject<T extends object, P extends Extract<keyof T, string>>(
+export function forSafePropsInObject<T extends object, P extends Extract<keyof T, string>>(
   obj: T,
   fn?: (propName: P, value: T[P]) => void,
   deleteUnsafeProp = false
@@ -59,4 +59,3 @@ function forSafePropsInObject<T extends object, P extends Extract<keyof T, strin
 
   return obj;
 }
-export { isSafePropName, isUnsafePropName, filterUnsafeProp, forSafePropsInObject };

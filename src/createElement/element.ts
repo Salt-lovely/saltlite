@@ -1,21 +1,21 @@
 import { forSafePropsInObject } from '../safe/unsafeProps';
 import { isFunction, isObject, isString } from '../util/typeGuard';
-import { assert } from '../util/utils';
+import { assert } from '../util/otherUtils';
 import { eventNameFix } from './element-event';
 
 // 两个重载
-function createElement<K extends keyof HTMLElementTagNameMap>(
+export function createElement<K extends keyof HTMLElementTagNameMap>(
   tagName: K,
   props?: createHTMLElementPropsMap[K] | null,
   children?: acceptableChildren | null
 ): HTMLElementTagNameMap[K];
-function createElement<K extends keyof HTMLElementTagNameMap, P>(
+export function createElement<K extends keyof HTMLElementTagNameMap, P>(
   customElement: (props: P, children?: acceptableChildren) => HTMLElementTagNameMap[K],
   props: P,
   children?: acceptableChildren | null
 ): HTMLElementTagNameMap[K];
 // 实现
-function createElement<K extends keyof HTMLElementTagNameMap, P>(
+export function createElement<K extends keyof HTMLElementTagNameMap, P>(
   argu1: K | ((props?: P, children?: acceptableChildren) => HTMLElementTagNameMap[K]),
   props: createHTMLElementPropsMap[K] | null | P,
   children?: acceptableChildren | null
@@ -50,7 +50,7 @@ function createElement<K extends keyof HTMLElementTagNameMap, P>(
     return <never>createElement('span');
   }
 }
-function createElements<Tag extends keyof HTMLElementTagNameMap, Elem extends AllHTMLElementMap, P>(
+export function createElements<Tag extends keyof HTMLElementTagNameMap, Elem extends AllHTMLElementMap, P>(
   props: (
     | {
         tagName: Tag;
@@ -75,4 +75,3 @@ function createElements<Tag extends keyof HTMLElementTagNameMap, Elem extends Al
     else return createElement(p.customElement, p.props, p.children);
   });
 }
-export { createElement, createElements };
